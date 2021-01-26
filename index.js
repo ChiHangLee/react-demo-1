@@ -1,35 +1,17 @@
-console.log('hi')
-
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 const div = (
-  t('div',
-    t('p',
-      t('span', 'hi')))
+  React.createElement('div', null,
+    React.createElement('p', null,
+      React.createElement('span', null, 'hi')))
 )
 
-// const div = (
-//   <div>
-//     <p>
-//       <span>hi</span>
-//     </p>
-//   </div>
-// )
+console.log(div) // 虚拟的 element
+
+
+ReactDOM.render(div, document.getElementById('root'))
+// document.body.appendChild(div)
 
 
 
-document.body.appendChild(div)
-
-
-function t(tagName, children) {
-
-  const element = document.createElement(tagName)
-  if (children) {
-    if (typeof children === 'string') {
-      var childElement = document.createTextNode(children)
-      element.appendChild(childElement)
-    } else {
-      element.appendChild(children)
-    }
-  }
-  return element
-}
